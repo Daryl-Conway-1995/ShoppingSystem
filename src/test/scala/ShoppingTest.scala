@@ -26,9 +26,50 @@ class ShoppingTest extends FlatSpec {
   "Given two apples and an orange, it" should "cost £1.45" in {
     val apple = new Apple
     val orange = new Orange
-    val items = Array[Fruit](apple,apple,orange)
+    val items = Array[Fruit](apple, apple, orange)
     assertResult(ShoppingMain.getCost(items)) {
       1.45
+    }
+  }
+  "Given three apples and one orange, it" should "cost £2.05" in {
+    val apple = new Apple
+    val orange = new Orange
+    val items = Array[Fruit](apple, apple, orange, apple)
+    assertResult(ShoppingMain.getCost(items)) {
+      2.05
+    }
+  }
+  "Given three apples and one orange with offers, it" should "cost £1.45" in {
+    val apple = new Apple
+    val orange = new Orange
+    val items = Array[Fruit](apple, apple, orange, apple)
+    assertResult(ShoppingMain.getCostOffers(items)) {
+      1.45
+    }
+  }
+  "Given nothing with offers, it" should "cost £0.00" in {
+    val items = Array[Fruit]()
+    assertResult(ShoppingMain.getCostOffers(items)) {
+      0.00
+    }
+  }
+  "Given six apples and nine oranges, it" should "cost £5.85" in {
+    val apple = new Apple
+    val orange = new Orange
+    val items = Array[Fruit](apple, apple, orange, apple, apple, orange, apple, apple, orange, orange, orange, orange, orange,
+      orange, orange)
+    assertResult(ShoppingMain.getCost(items)) {
+      5.85
+    }
+  }
+
+  "Given six apples and nine oranges with offers, it" should "cost £3.30" in {
+    val apple = new Apple
+    val orange = new Orange
+    val items = Array[Fruit](apple, apple, orange, apple, apple, orange, apple, apple, orange, orange, orange, orange, orange,
+      orange, orange)
+    assertResult(ShoppingMain.getCostOffers(items)) {
+      3.30
     }
   }
 }
