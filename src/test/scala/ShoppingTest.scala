@@ -16,6 +16,13 @@ class ShoppingTest extends FlatSpec {
       0.60
     }
   }
+  "Given a banana, it" should "cost £0.20" in {
+    val banana = new Banana
+    val items = Array[Fruit](banana)
+    assertResult(ShoppingMain.getCost(items)) {
+      0.20
+    }
+  }
   "Given an orange, it" should "cost £0.00" in {
     val orange = new Orange
     val items = Array[Fruit](orange)
@@ -31,6 +38,15 @@ class ShoppingTest extends FlatSpec {
       1.45
     }
   }
+
+    "Given two bananas and an orange, it" should "cost £0.45" in {
+      val banana = new Banana
+      val orange = new Orange
+      val items = Array[Fruit](banana, banana, orange)
+      assertResult(ShoppingMain.getCostOffers(items)) {
+        0.45
+      }
+    }
   "Given three apples and one orange, it" should "cost £2.05" in {
     val apple = new Apple
     val orange = new Orange

@@ -3,7 +3,8 @@ object ShoppingMain {
   def main(args: Array[String]): Unit = {
     val apple = new Apple
     val orange = new Orange
-    val items = Array[Fruit](apple, apple, orange, apple)
+    val banana = new Banana
+    val items = Array[Fruit](banana,banana)
     println(getCost(items))
     println(getCostOffers(items))
   }
@@ -17,6 +18,7 @@ object ShoppingMain {
       cost match {
         case 0.25 => (((number / 3) * 2) + number % 3) * cost
         case 0.60 => ((number / 2) + number % 2) * cost
+        case 0.20 => ((number/2) +number % 2 ) * cost
         case _ => 0.00
       }
     }
