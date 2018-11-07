@@ -4,7 +4,7 @@ object ShoppingMain {
     val apple = new Apple
     val orange = new Orange
     val banana = new Banana
-    val items = Array[Fruit](banana,banana)
+    val items = Array[Fruit](banana, banana)
     println(getCost(items))
     println(getCostOffers(items))
   }
@@ -13,16 +13,20 @@ object ShoppingMain {
     items.map(i => i.cost).sum
   }
 
+  def getOffer(cost: Double, numberOfItems: Int, discountDonominator: Int, discountNumerator: Int): Double = {
+    (((numberOfItems / discountNumerator) * discountDonominator) + numberOfItems % discountDonominator) * cost
+  }
+
   def getCostOffers(items: Array[Fruit]): Double = {
-    def getDiscount(cost: Double, number: Int): Double = {
-      cost match {
-        case 0.25 => (((number / 3) * 2) + number % 3) * cost
-        case 0.60 => ((number / 2) + number % 2) * cost
-        case 0.20 => ((number/2) +number % 2 ) * cost
+    def getDiscount(fruit: Fruit, number: Int): Double = {
+      fruit match {
+        case o: Orange => getOffer(o.cost, number, 3, 2)
+        case a: Apple => ((number / 2) + number % 2) * a.cost
+        case b: Banana => ((number / 2) + number % 2) * b.cost
         case _ => 0.00
       }
     }
 
-    items.groupBy(i => i.cost).map(t => getDiscount(t._1, t._2.length)).sum
+    items.groupBy(i => i).map(t => getDiscount(t._1, t._2.length)).sum
   }
 }
