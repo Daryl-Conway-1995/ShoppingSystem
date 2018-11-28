@@ -86,4 +86,13 @@ class ShoppingTest extends FlatSpec {
       1.50
     }
   }
+
+  "given the 2 for 1 of both apples and bananas it" should "cost £0.60" in {
+    val banana = new Banana
+    val apple = new Apple
+    val items = Array[Fruit]( apple, banana)
+    assertResult(ShoppingMain.getCostOffers(items)){
+      0.60
+    }
+  }
 }
