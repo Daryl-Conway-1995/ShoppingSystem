@@ -1,5 +1,5 @@
 abstract class Fruit {
-  val cost = 0.00
+  val cost = 0
 }
 
 class AAndB extends Fruit {
@@ -7,17 +7,17 @@ class AAndB extends Fruit {
 }
 
 case class Apple() extends AAndB {
-  override val cost: Double = 0.60
+  override val cost = 60
 }
 
 case class Banana() extends AAndB {
-  override val cost: Double = 0.20
+  override val cost = 20
 }
 
 case class Orange() extends Fruit {
-  override val cost: Double = 0.25
+  override val cost = 25
 }
 
 case class Melon() extends Fruit {
-  override val cost: Double = 1
+  override val cost = 100
 }
