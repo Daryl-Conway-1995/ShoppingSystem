@@ -5,7 +5,8 @@ object ShoppingMain {
     val orange = new Orange
     val banana = new Banana
     val items = Array[Fruit](banana, apple)
-    println(combineAppleAndBanana(4, 5, 0.60, 0.25))
+    getCostOffers(items)
+    //println(combineAppleAndBanana(4, 5, 0.60, 0.25))
   }
 
   def getCost(items: Array[Fruit]): Double = {
@@ -33,6 +34,11 @@ object ShoppingMain {
         case _ => 0.00
       }
     }
+
+    println( items.groupBy{
+      case o:Orange => "Orange"
+      case a:AAndB => "AAndB"
+    })
 
     items.groupBy(i => i).map(t => getDiscount(t._1, t._2.length)).sum
   }
