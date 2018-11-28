@@ -1,7 +1,7 @@
-import org.scalatest.FlatSpec
+import org.scalatest.{FlatSpec, Matchers}
 
 
-class ShoppingTest extends FlatSpec {
+class ShoppingTest extends FlatSpec with Matchers{
 
   "Given no items, it" should "cost £0.00" in {
     val items = Array[Fruit]()
@@ -94,5 +94,21 @@ class ShoppingTest extends FlatSpec {
     assertResult(ShoppingMain.getCostOffers(items)){
       0.60
     }
+  }
+
+  "Entering 1 melon" should "return 1" in{
+    ShoppingMain.getCostOffers(Array[Fruit](Melon())) should equal (1)
+  }
+
+  "Entering 2 melon" should "return 2" in{
+    ShoppingMain.getCostOffers(Array[Fruit](Melon(), Melon())) should equal (2)
+  }
+
+  "Entering 3 melon" should "return 2" in{
+    ShoppingMain.getCostOffers(Array[Fruit](Melon(), Melon(), Melon())) should equal (2)
+  }
+
+  "Entering 4 melon" should "return 3" in{
+    ShoppingMain.getCostOffers(Array[Fruit](Melon(), Melon(), Melon(), Melon())) should equal (3)
   }
 }
