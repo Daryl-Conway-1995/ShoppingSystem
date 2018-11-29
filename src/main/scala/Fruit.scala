@@ -2,15 +2,15 @@ abstract class Fruit {
   val cost = 0
 }
 
-class AAndB extends Fruit {
+class AppleAndBanana extends Fruit {
   //class for apple and banana overlap.
 }
 
-case class Apple() extends AAndB {
+case class Apple() extends AppleAndBanana {
   override val cost = 60
 }
 
-case class Banana() extends AAndB {
+case class Banana() extends AppleAndBanana {
   override val cost = 20
 }
 
